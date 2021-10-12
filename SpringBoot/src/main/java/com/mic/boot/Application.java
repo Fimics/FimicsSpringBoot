@@ -1,4 +1,4 @@
-package com.mic.app;
+package com.mic.boot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

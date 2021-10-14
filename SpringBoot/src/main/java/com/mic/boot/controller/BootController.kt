@@ -1,4 +1,4 @@
-package com.mic.boot
+package com.mic.boot.controller
 
 import com.mic.boot.config.JDBCConfig
 import org.springframework.web.bind.annotation.GetMapping

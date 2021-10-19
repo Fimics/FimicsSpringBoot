@@ -1,9 +1,12 @@
 package com.mic.boot.controller
 
 import com.mic.boot.config.JDBCConfig
+import com.mic.boot.pojo.User
+import com.mic.boot.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController
 import javax.sql.DataSource
 
@@ -16,6 +19,9 @@ open class BootController {
 
     @Autowired
     var dataSourceApp:DataSource?=null
+
+    @Autowired
+    lateinit var userService:UserService
 
     @Value("\${itcast.url}")
     private val itcastUrl: String? = null
@@ -50,5 +56,15 @@ open class BootController {
         println(dataSourceApp?.connection)
         println(itcastUrl)
         println(itheimaUrl)
+    }
+
+    /**
+     * 根据用户id查询用户
+     * @param id 用户id
+     * @return 用户
+     */
+    @GetMapping("/user/{id}")
+    fun queryById(@PathVariable id:Long):User{
+          return userService.queryById(id)
     }
 }

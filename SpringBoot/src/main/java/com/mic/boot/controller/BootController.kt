@@ -41,14 +41,14 @@ open class BootController {
 
     @GetMapping("/dbconfig1")
     fun dbConfig1():String{
-        return  dbConfig.dataSource1().toString()
+//        return  dbConfig.dataSource1().toString()
+        return "datasource config 1"
     }
 
     @GetMapping("/ymlconfig")
     fun ymlConfig(){
+        println(dataSourceApp?.connection)
         println(itcastUrl)
         println(itheimaUrl)
     }
-
-
 }

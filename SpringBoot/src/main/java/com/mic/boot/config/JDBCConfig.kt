@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.PropertySource
 import javax.sql.DataSource
 
-@Configuration
+//@Configuration
 //@PropertySource("classpath:jdbc.properties")
 //@EnableConfigurationProperties(JdbcProperties::class)
 open class JDBCConfig{
@@ -42,9 +42,9 @@ open class JDBCConfig{
 //        return ds
 //    }
 
-    @Bean
-    @ConfigurationProperties(prefix = "jdbc")
-    open fun dataSource1():DataSource{
-        return DruidDataSource()
-    }
+//    @Bean
+//    @ConfigurationProperties(prefix = "jdbc")
+//    open fun dataSource1():DataSource{
+//        return DruidDataSource()
+//    }
 }

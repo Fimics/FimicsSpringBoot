@@ -4,7 +4,11 @@ jdbc:
   jdbc.username: root
   jdbc.password: root
 
-
+#多个yml 联合使用
 spring:
   profiles:
     active: one,two
+
+#tomcat 端口
+server:
+  port: 80

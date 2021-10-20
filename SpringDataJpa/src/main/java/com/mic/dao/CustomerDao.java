@@ -27,16 +27,16 @@ public interface CustomerDao extends JpaRepository<Customer,Long>, JpaSpecificat
     @Query(value = "select * from cst_customer",nativeQuery = true)
     public List<Customer> findAllSql();
 
-    //模糊查询
+    //模糊查询  名称约定
     @Query(value = "from Customer  where custName like ?")
     public List<Customer> findAllWithLike(String name);
 
     //方法名约定查询
     public Customer findByCustName(String custName);
 
-    //方法名约定查询  模糊查询
-    public Customer findByCustNameLike(String custName);
-
-    //使用客户名称模糊查询和使用行业精准查询
-    public Customer findByCustNameLikeAnAndCustIndustry(String custName,String custIndustry);
+//    //方法名约定查询  模糊查询
+//    public Customer findByCustNameLike(String custName);
+//
+//    //使用客户名称模糊查询和使用行业精准查询
+//    public Customer findByCustNameLikeAnAndCustIndustry(String custName,String custIndustry);
 }

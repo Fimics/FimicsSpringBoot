@@ -2,6 +2,8 @@ package com.mic.domain;
 
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "cst_customer")  //类与表的映射关系
@@ -15,7 +17,7 @@ public class Customer {
     //主键申明
     @Id
     //主键生成策略
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "cust_id")
     private Long custId; // main key
     @Column(name = "cust_name")
@@ -30,6 +32,21 @@ public class Customer {
     private String custAddress;
     @Column(name = "cust_phone")
     private String custPhone;
+
+
+    //一对多，在多的一方维护关系 注了以后就放弃外键维护权
+//    @OneToMany(targetEntity = LinkMan.class)
+//    @JoinColumn(name = "lkm_cust_id",referencedColumnName = "cust_id")
+    @OneToMany(mappedBy = "customer" ,cascade = CascadeType.ALL)
+    private Set<LinkMan> linkMans = new HashSet<LinkMan>();
+
+    public Set<LinkMan> getLinkMans() {
+        return linkMans;
+    }
+
+    public void setLinkMans(Set<LinkMan> linkMans) {
+        this.linkMans = linkMans;
+    }
 
     public Long getCustId() {
         return custId;

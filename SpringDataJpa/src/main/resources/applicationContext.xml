@@ -54,7 +54,7 @@
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver"></property>
     </bean>
 
-    <!--3.整合spring dataJpa-->
+    <!--3.整合spring dataJpa 对些包下的dao接口进行动态代理增强-->
     <jpa:repositories base-package="com.mic.dao" transaction-manager-ref="transactionManager"
                    entity-manager-factory-ref="entityManagerFactoty" ></jpa:repositories>
 

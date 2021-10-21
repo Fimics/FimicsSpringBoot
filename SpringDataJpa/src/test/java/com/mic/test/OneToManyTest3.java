@@ -18,7 +18,7 @@ import java.util.Set;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:applicationContext.xml")
-public class TablesTest3 {
+public class OneToManyTest3 {
 
     @Autowired
     private CustomerDao cDao;

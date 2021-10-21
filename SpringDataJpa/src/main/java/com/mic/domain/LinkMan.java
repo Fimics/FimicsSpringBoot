@@ -102,4 +102,18 @@ public class LinkMan {
         this.lkmMemo = lkmMemo;
     }
 
+    @Override
+    public String toString() {
+        return "LinkMan{" +
+                "lkmId=" + lkmId +
+                ", lkmName='" + lkmName + '\'' +
+                ", lkmGender='" + lkmGender + '\'' +
+                ", lkmPhone='" + lkmPhone + '\'' +
+                ", lkmMobile='" + lkmMobile + '\'' +
+                ", lkmEmail='" + lkmEmail + '\'' +
+                ", lkmPosition='" + lkmPosition + '\'' +
+                ", lkmMemo='" + lkmMemo + '\'' +
+                ", customer=" + customer +
+                '}';
+    }
 }

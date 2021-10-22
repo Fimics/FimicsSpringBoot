@@ -1,6 +1,8 @@
 package com.mic.controller;
 
 import com.mic.pojo.User;
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -14,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/consumer")
+@DefaultProperties(defaultFallback = "defaultFallback") //默认降级方法，使用在类上
 public class ConsumerController {
 
     @Autowired
@@ -42,9 +45,22 @@ public class ConsumerController {
 //    }
 
     @GetMapping("/{id}")
-    public User queryById(@PathVariable Long id){
-
+//    @HystrixCommand(fallbackMethod = "queryByIdFallback") //服务降级方法
+    @HystrixCommand
+    public String queryById(@PathVariable Long id){
+        if (id == 1) {
+            throw new RuntimeException("太忙了");
+        }
         String url="http://user-service/user/"+id;
-        return template.getForObject(url,User.class);
+        return template.getForObject(url,String.class);
+    }
+
+    public String queryByIdFallback(Long id){
+//        log.error("查询用户信息失败。id：{}", id);
+        return "对不起，网络太拥挤了！";
+    }
+
+    public String defaultFallback(){
+        return "默认提示：对不起，网络太拥挤了！";
     }
 }

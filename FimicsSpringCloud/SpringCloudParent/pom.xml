@@ -12,6 +12,7 @@
     <modules>
         <module>../ChildConsumer</module>
         <module>../ChildUserService</module>
+        <module>../EurekaServer</module>
     </modules>
 
     <parent>

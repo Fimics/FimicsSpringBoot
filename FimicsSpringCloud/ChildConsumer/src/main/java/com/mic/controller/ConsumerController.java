@@ -22,22 +22,29 @@ public class ConsumerController {
     @Autowired
     private DiscoveryClient discoveryClient;
 
+//    @GetMapping("/{id}")
+//    public User queryById(@PathVariable Long id){
+////        String url = "http://localhost:9091/user/8";
+//        StringBuffer sb = new StringBuffer();
+//        //获取Eureka 中注册的user-servic实例
+//        List<ServiceInstance> serviceInstances = discoveryClient.getInstances("user-service");
+//        ServiceInstance serviceInstance = serviceInstances.get(0);
+//        System.out.println("port--->"+serviceInstance.getPort());
+//        sb.append("http://")
+//                .append(serviceInstance.getHost())
+//                .append(":")
+//                .append(serviceInstance.getPort())
+//                .append("/user/")
+//                .append(id);
+//        String url =sb.toString();
+//        System.out.println("url =--->"+url);
+//        return template.getForObject(url,User.class);
+//    }
+
     @GetMapping("/{id}")
     public User queryById(@PathVariable Long id){
-//        String url = "http://localhost:9091/user/8";
-        StringBuffer sb = new StringBuffer();
-        //获取Eureka 中注册的user-servic实例
-        List<ServiceInstance> serviceInstances = discoveryClient.getInstances("user-service");
-        ServiceInstance serviceInstance = serviceInstances.get(0);
-        System.out.println("port--->"+serviceInstance.getPort());
-        sb.append("http://")
-                .append(serviceInstance.getHost())
-                .append(":")
-                .append(serviceInstance.getPort())
-                .append("/user/")
-                .append(id);
-        String url =sb.toString();
-        System.out.println("url =--->"+url);
+
+        String url="http://user-service/user/"+id;
         return template.getForObject(url,User.class);
     }
 }

@@ -18,6 +18,12 @@ public class UserController {
 
     @GetMapping("/{id}")
     public User queryById(@PathVariable long id){
+        //超时测试 服务降级
+//        try {
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         return userService.queryById(id);
     }
 }

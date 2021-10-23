@@ -19,3 +19,13 @@ hystrix:
         errorThresholdPercentage: 50 # 触发熔断错误比例阈值，默认值50%(失败比例)
         sleepWindowInMilliseconds: 10000 # 熔断后休眠时长，默认值5秒
         requestVolumeThreshold: 10 # 熔断触发最小请求次数，默认值是20
+
+ribbon:
+  ConnectTimeout: 1000 # 连接超时时长
+  ReadTimeout: 2000 # 数据通信超时时长
+  MaxAutoRetries: 0 # 当前服务器的重试次数
+  MaxAutoRetriesNextServer: 0 # 重试多少次服务
+  OkToRetryOnAllOperations: false # 是否对所有的请求方式都重试
+feign:
+  hystrix:
+    enabled: true # 开启Feign的熔断功能

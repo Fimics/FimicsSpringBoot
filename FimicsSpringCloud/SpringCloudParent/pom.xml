@@ -13,6 +13,7 @@
         <module>../ChildConsumer</module>
         <module>../ChildUserService</module>
         <module>../EurekaServer</module>
+        <module>../ChileGateway</module>
     </modules>
 
     <parent>

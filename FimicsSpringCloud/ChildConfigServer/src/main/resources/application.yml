@@ -1,0 +1,16 @@
+server:
+  port: 12000
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/mengmofang/spring-cloud-config.git
+
+# 把 config-server 当作一个服务注册到 eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka

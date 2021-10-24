@@ -30,6 +30,15 @@ spring:
       default-filters:
         - AddResponseHeader=X-Response-Foo, Bar
         - AddResponseHeader=abc-myname,fimics
+      #跨域请求(只有前端口 js ajax 才会出出，后台请求不会出现)
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            #allowedOrigins: * # 这种写法或者下面的都可以，*表示全部
+            allowedOrigins:
+              - "http://docs.spring.io"
+            allowedMethods:
+              - GET
 eureka:
   client:
     service-url:

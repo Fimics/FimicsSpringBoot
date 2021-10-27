@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es6 test</title>
+    <script type="text/javascript">
+
+        for (var i=0;i<5;i++){
+            console.log(i);
+        }
+        console.log("var outer->"+i)
+
+        for (let j=0;j<5;j++){
+            console.log(j);
+        }
+        // console.log("let outer->"+j)
+
+        // let name = "heima";
+        // console.log("hello " + name);
+
+        //模板字符串
+        // const name = "heima";
+        // console.log(`hello ${name}`);
+
+        var msg = "Hi \
+                    \
+                    heima";
+        console.log(msg)
+
+        const template = `<div>
+                <span>hello heima</span>
+        </div>`;
+        console.log(template)
+
+        //es5对象构造
+        function persones5(name, age) {
+            return {name: name, age: age};
+        }
+        console.log("es5 => " + JSON.stringify(persones5("heima1", 13)));
+
+        //es6
+        function person6(name, age) {
+            return {name, age};
+        }
+        console.log("es6 => " + JSON.stringify(person6("heima2", 13)));
+
+        //原来函数的写法
+        var print = function (obj) {
+            console.log(obj);
+        };
+        print("print");
+
+        //箭头函数
+        var print2 = obj => console.log(obj);
+        print2("print2");
+
+        //箭头函数
+        var sum2 = (a,b) => a+b;
+        console.log(sum2(1,2));
+
+        var sum3 = (a,b) => {
+            console.log(a+b);
+            return a+b;
+        };
+        console.log(sum3(1,2));
+
+
+        let person = {
+            "name": "heima",
+            learn1: function (course="java") {
+                console.log(this.name + " 在学习 " + course);
+            },
+            //箭头函数；不能使用this
+            learn2: (course) => console.log(person.name + " 在学习 " + course),
+            //简写
+            learn3(course){
+                console.log(this.name + " 在学习 " + course);
+            }
+        };
+        person.learn1("java");
+        person.learn2("js");
+        person.learn3("css");
+
+        const person1 = {
+            name:"heima",
+            age:13,
+            language:["java","js","css"]
+        };
+        function hello(person1) {
+            console.log("hello " + person1.name);
+        }
+        hello(person1);
+
+        //箭头函数、解构表达式
+        var hello2 = ({name}) => console.log("hello2 " + name);
+        hello2(person1);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

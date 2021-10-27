@@ -14,6 +14,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 //css 文件用下面的转换器转换
+                //根据群id和用户id获取群成员信息
                 use: ["style-loader","css-loader"]
             }
         ]

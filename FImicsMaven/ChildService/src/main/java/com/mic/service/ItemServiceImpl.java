@@ -16,6 +16,7 @@ public class ItemServiceImpl implements ItemService {
 
 
     public Item findById(int id) {
+        System.out.println("service findById...");
         return itemMapper.findById(id);
     }
 }

@@ -15,8 +15,9 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
 
-    @RequestMapping("/showItem/{id}")
+    @RequestMapping("/show/{id}")
     public String findById(@PathVariable("id") int id, Model model){
+        System.out.println("controller findById...");
         Item item = itemService.findById(id);
         model.addAttribute("item",item);
         return "item";

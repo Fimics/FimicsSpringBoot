@@ -25,4 +25,19 @@
 
     </dependencies>
 
+    <!--添加到要上传的项目pom中确定上传路径开始-->
+    <distributionManagement>
+        <repository>
+            <id>maven-releases</id>
+            <name>maven-releases</name>
+            <url>http://0.0.0.0:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>maven-snapshots</id>
+            <name>maven-snapshots</name>
+            <url>http://0.0.0.0:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+    <!--添加到要上传的项目pom中确定上传路径结束-->
+
 </project>

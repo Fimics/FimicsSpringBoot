@@ -16,5 +16,6 @@
     <dubbo:application name="Consumer"></dubbo:application>
     <dubbo:registry address="zookeeper://192.168.23.93:2181"></dubbo:registry>
     <dubbo:annotation package="com.mic.controller"></dubbo:annotation>
+    <!--启动时检查-->
     <dubbo:consumer check="false"></dubbo:consumer>
 </beans>

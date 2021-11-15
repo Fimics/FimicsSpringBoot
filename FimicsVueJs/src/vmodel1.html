@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>vmodel</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+
+    <!--    v-bind 打开-->
+    <!--    <style type="text/css">-->
+    <!--        div {-->
+    <!--            width: 100px;-->
+    <!--            height: 100px;-->
+    <!--            color: white;-->
+    <!--        }-->
+    <!--        .red{-->
+    <!--            background-color: red;-->
+    <!--        }-->
+    <!--        .blue{-->
+    <!--            background-color: blue;-->
+    <!--        }-->
+    <!--    </style>-->
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="num">
+    <button v-on:click="num++">点我</button>
+    <h2>{{name}} 非常酷！有{{num}}个学科。</h2>
+    <!--    生命周期-->
+    <h3>{{age}}</h3>
+    <!-- 插值   -->
+    v-text:<span v-text="msg"></span>
+    v-html:<span v-html="msg"></span>
+
+    <!--  on  指令-->
+    <button v-on:click="num++">增加</button>
+    <button @click="decrement">减少</button>
+    <h2>
+        num = {{num}}
+    </h2>
+    <hr>
+    事件冒泡测试：<br>
+    <div style="background-color: lightblue; width:100px;height:100px" @click="print('div被点击了')">
+        <button @click.stop="print('点击了button')">点我试试</button>
+    </div>
+    <br>阻止默认事件：<br>
+    <a href="http://www.itcast.cn" @click.prevent="print('点击了超链接')">vue ontest</a>
+
+    <!--    v-for-->
+    <ul>
+        <li v-for="(user, index) in users" :key="index">
+            {{index}}--{{user.name}}--{{user.age}}--{{user.gender}}
+        </li>
+    </ul>
+    <hr>
+    <ul>
+        <li v-for="(value, key, index) in person">
+            {{index}}--{{key}}--{{value}}
+        </li>
+    </ul>
+
+    <!--    v-if ,v-show-->
+
+    <button @click="show=!show">点我</button>
+    <h2 v-if="show">
+        Hello VueJS.
+    </h2>
+    <hr>
+    <ul>
+        <li v-for="(user, index) in users" v-if="user.gender=='女'" :key="index" style="background-color: deeppink">
+            {{index}}--{{user.name}}--{{user.age}}--{{user.gender}}
+        </li>
+        <li v-else style="background-color: blue">
+            {{index}}--{{user.name}}--{{user.age}}--{{user.gender}}
+        </li>
+    </ul>
+
+    <hr>
+    <h2 v-show="show">
+        你好；vue！
+    </h2>
+
+    <!--    v-bind-->
+    <button @click="color='red'">红色</button>
+    <button @click="color='blue'">蓝色</button>
+    <div :class="color">
+        点击按钮改变背景颜色
+    </div>
+    <hr>
+    <br>
+    <button @click="bool=!bool">点我改变下面色块的颜色</button>
+    <div :class="{red:bool, blue:!bool}">
+        点击按钮改变背景颜色
+    </div>
+
+    <!-- -计算属性的使用-->
+    <h2>
+        你的生日是：
+        {{new Date(birthday).getFullYear()}}-{{new Date(birthday).getMonth()+1}}-{{new Date(birthday).getDay()}}
+    </h2>
+    <hr>
+    <h2>
+        你的生日是：
+        {{birth}}
+    </h2>
+
+    <!--    watch listener-->
+    <input type="text" v-model="message">
+    <hr>
+    <br>
+    <input type="text" v-model="person.name"><br>
+    <input type="text" v-model="person.age">
+    <button @click="person.age++">+</button>
+    <h2>
+        姓名为：{{person.name}}；年龄为：{{person.age}}
+    </h2>
+
+</div>
+
+<script type="text/javascript">
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            name: "v-model",
+            num: 1,
+            age: "1",
+            msg: "<h2> hello ,vue</h2>",
+
+            users: [
+                {"name": "黑马", "age": 13, "gender": "男"},
+                {"name": "传智播客", "age": 13, "gender": "女"},
+                {"name": "酷丁鱼", "age": 4, "gender": "男"}
+            ],
+            person: {"name": "传智汇", "age": 13, "gender": "男", "address": "中国"},
+            show: true,
+            color: "red",
+            bool: true,
+            birthday: 1429032123201,
+            computed: {
+                birth() {
+                    const date = new Date(this.birthday);
+                    return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDay();
+                }
+            },
+            message: "vue",
+        },
+
+        //钩子函数 生命周期
+        created: function () {
+            //this 表示vue本身
+            // this.age = "hello vue.create.";
+            this.$data.age = "hello vue.create.";
+            console.log(this);
+        },
+
+        methods: {
+            //递减
+            decrement() {
+                this.num--;
+            },
+            //打印
+            print(str) {
+                console.log(str);
+            }
+        }
+    });
+</script>
+</body>
+</html>
